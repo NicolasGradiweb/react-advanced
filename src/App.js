@@ -1,9 +1,8 @@
 import React from 'react'
+import { Category } from './components/Category/index.js'
 
-const App = () => {
-  return (
-    <h1>Helloo world!!</h1>
-  )
-}
+const App = () => (
+  <Category />
+)
 
 export default App
