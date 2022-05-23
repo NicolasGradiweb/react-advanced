@@ -5,6 +5,9 @@ export const List = styled.ul`
   display: flex;
   overflow-x: scroll;
   list-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const Item = styled.li`

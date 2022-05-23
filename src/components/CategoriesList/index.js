@@ -2,11 +2,16 @@
 import React from 'react'
 import { Category } from '../Category'
 import { Item, List } from './styles'
+import db from '../../../api/db.json'
 
 export const CategoriesList = () => (
   <List>
-    {[1, 2, 3].map(category => (
-      <Item key={category}><Category /></Item>
+    {db.categories.map(category => (
+      <Item key={category.id}>
+        <Category
+          {...category}
+        />
+      </Item>
     ))}
   </List>
 )
