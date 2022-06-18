@@ -10,15 +10,18 @@ export const PhotoCard = ({ id, likes = 0, src = IMG }) => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const observer = new window.IntersectionObserver(function (entries) {
-      const { isIntersecting } = entries[0]
-      if (isIntersecting) {
-        setShow(isIntersecting)
-        observer.disconnect()
-      }
-    })
+    import('intersection-observer')
+      .then(() => {
+        const observer = new window.IntersectionObserver(function (entries) {
+          const { isIntersecting } = entries[0]
+          if (isIntersecting) {
+            setShow(isIntersecting)
+            observer.disconnect()
+          }
+        })
 
-    observer.observe(article.current)
+        observer.observe(article.current)
+      })
   }, [article])
 
   return (
