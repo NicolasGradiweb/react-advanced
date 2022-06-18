@@ -4,15 +4,25 @@ import { Category } from '../Category'
 import { Item, List } from './styles'
 import db from '../../../api/db.json'
 
+function useCategoriesData() {
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://petgram-server.midudev.now.sh/categories')
+      .then(res => res.json())
+      .then(response => setCategories(response))
+    setLoading(false)
+  }, [])
+
+  return { categories , loading }
+}
+
 export const CategoriesList = () => {
-  // const [categories, setCategories] = useState([])
+  // const { categories , loading } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
 
-  // useEffect(() => {
-  //   fetch('https://petgram-server.midudev.now.sh/categories')
-  //     .then(res => res.json())
-  //     .then(response => setCategories(response))
-  // }, [])
   useEffect(() => {
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
@@ -25,7 +35,7 @@ export const CategoriesList = () => {
   }, [showFixed])
 
   const renderList = (fixed) => (
-    <List className={fixed ? 'fixed' : ''}>
+    <List fixed={fixed}>
       {db.categories.map(category => (
         <Item key={category.id}>
           <Category
