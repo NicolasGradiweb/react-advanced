@@ -4,7 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import App from './App'
 
 const client = new ApolloClient({
-  uri: 'curso-platzi-react-avanzado-kitez6z1q-nimoscmp.vercel.app/graphql',
+  uri: 'https://curso-platzi-react-avanzado-inky-ten.vercel.app/graphql',
   cache: new InMemoryCache()
 })
 
